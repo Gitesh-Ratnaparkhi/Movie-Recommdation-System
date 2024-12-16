@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: src
+Version: 0.0.1
+Summary: A Machine Learning Web App
+Author: Gitesh Suresh Ratnaparkhi
+Author-email: giteshratnaparkhi@gmail.com
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+
+Command to activate environment -> conda activate "C:\Users\gites\OneDrive\Desktop\Movie Recomdation System\env"
+command to create environment conda create --prefix ./env python==3.7 -y
+Movies recomender system

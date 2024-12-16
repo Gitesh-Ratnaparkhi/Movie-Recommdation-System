@@ -1,0 +1,43 @@
+step 1: numpy ,panda ,matplotlib , os
+step 2: read the data
+step 3: revome the missing values and duplicate values
+step 4: Convert the string to list
+step 5: now the ftech director name only form crew column
+step 6: split the list of column "overview"
+step 7: now task for every coloum , we will convert Sam worthington (name) into SamWorthington for vector to consider it as one meaingful word ie , Sam Worthington -> SamWorthington
+step 8: converting all the info in paragraph format.(new_df) and before it convert it into lower case.
+step 9:  nltk ,from nltk.stem.porter import PorterStemmer
+step 10 : now from sklearn.feature_extraction.text import CountVectorizer , for aecssesing the maxsimum 5000 words and stop words are english
+step 11 : vector = cv.fit_transform(new_df['tags']).toarray() to get it into 0's and 1's
+step 12 : now cosime similarity is use to predicted the near movies
+step 13 : create a function to recommend the movie and the recommendation is done by cosine similarity.
+
+## uses:
+iloc - the iloc function is used to select rows and columns from a Pandas DataFrame using integer-based indexing
+lambda - Python Lambda Functions are anonymous functions means that the function is without a name. As we already know the def keyword is used to define a normal function in Python
+split - The split() method splits a string into a list.
+poster Sretemming - the Porter Stemmer is one of the oldest and most widely used stemming algorithms. stemming algorithm reduces the words “chocolates”, “chocolatey”, and “choco” to the root word, 
+sklearn - Scikit-learn is an open source data analysis library, and the gold standard for Machine Learning (ML) in the Python ecosystem.
+CountVectorizer - CountVectorizer is a class in the scikit-learn Python library that converts text documents into a numerical matrix of word or token counts
+Cosine similarity -Cosine similarity is a metric used in recommendation systems to find similar items based on user preferences.
+cos(theta) =A.B / |A|.|B| 
+we acn use it as :
+cos_sim = np.dot(A,B)/(norm(A)*norm(B)) 
+OR:
+similarity = cosine_similarity(vector)
+enumerate - enumerate is a built-in function in python that allows you to keep track of the number of iterations (loops) in a loop.
+pickle : pickle is a module that converts Python objects into byte streams for storage, transmission, or maintaining program there are the functions dump() and load() can help serialize and deserialize objects
+Pickling: The process of converting a A .sh file is a scripting language command file containing a computer program that can be run by the Unix shell. Python object into a byte stream
+byte streams : byte streams are a sequence of bytes used by programs to input and output information. 
+
+#Extension:
+.ipynb : . ipynb stands for “Interactive Python Notebook”, the file format of Jupyter Notebook
+Procfile : Use a Procfile, a text file in the root directory of your application, to explicitly declare what command to execute to start your app.
+.sh : A .sh file is a scripting language command file containing a computer program that can be run by the Unix shell.
+.md: Markdown is a markup language with a plain text-like syntax for formatting documents.
+.py : A .py file is a Python script file. A Python script is a text file containing Python code to be executed.
+.csv : A .csv file is a comma-separated values file.
+.txt : A .txt file is a text file.
+/.json : JSON is text, written with JavaScript object notation.
+
+
