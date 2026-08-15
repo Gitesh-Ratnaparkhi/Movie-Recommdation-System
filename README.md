@@ -1,32 +1,74 @@
-Introduction :
-    A movie recommendation system is a software tool designed to suggest movies to users based on their preferences
-    interests, or past behavior. It leverages various algorithms and data to predict which movies a user might enjoy, helping them discover content that matches their tastes. These systems are commonly used by streaming platforms like Netflix, Hulu, and Amazon Prime.
-    In our project we are going to use Content-based Filtering method: This method recommends movies based on the characteristics of the movies themselves, such as genre, director, actors, or keywords. It suggests movies that share similar attributes to those the user has already enjoyed.
-Objectives :
-    1. Personalized Recommendations: Provide tailored movie suggestions to users based on their preferences and past interactions.
+<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/4ad7736d-635b-4214-904f-766efa889483" />
 
-    2. Utilization of Content Features: Analyze movie metadata (e.g., genres, actors, directors, plot, etc.) to match movies with user preferences.
 
-    3. Improved User Engagement: Enhance user experience by offering relevant recommendations, encouraging more interaction with the platform.
+# 🎬 Movie Recommendation System (Content-Based Filtering)
 
-    4. Cold Start Problem for Users: Address the cold start problem for new users by recommending movies based on their explicitly provided preferences or initial ratings.
+A machine learning-powered **Movie Recommendation System** built to suggest relevant films based on item metadata and content similarity. By analyzing features such as genres, cast, crew, keywords, and plot summaries, the system computes similarity scores between titles to deliver accurate, personalized recommendations without requiring prior user history.
 
-    5. Transparency: Offer explainable recommendations by showing why a movie was recommended (e.g., similar genre, actor, or director).
+---
 
-    6. Independence from Popularity: Recommend niche or less-known movies that align with user preferences, not just popular ones.
+## 📌 Project Overview
 
-    7. Scalability: Ensure the system can handle a growing number of users and movie data efficiently.
+Traditional recommendation engines rely heavily on user behavior (**Collaborative Filtering**), which often struggles with the cold-start problem for new users. This project implements a **Content-Based Filtering** approach, focusing on intrinsic movie attributes to evaluate proximity across a multi-dimensional feature space.
 
-    8. Content Exploration: Help users discover new movies similar to their favorites that they might not have considered otherwise.
+* 🗃️ **Dataset:** TMDB 5000 Movies / MovieLens metadata (overviews, genres, keywords, cast, and director).
+* 🧮 **Core Algorithm:** Text Vectorization (TF-IDF / Bag of Words) paired with **Cosine Similarity** scoring.
+* 🖥️ **Interface:** Interactive web dashboard for real-time querying, recommendation lists, and poster rendering.
 
-    9. Adaptability: Allow the system to adapt to a user’s changing preferences over time by considering recent feedback or interactions.
+---
 
-    10. Cross-Domain Recommendations: Enable connections between different domains, like recommending movies based on TV shows or books with similar themes.
+## ⚙️ How It Works
 
-Data : 
-    In this project, we will use the "TMDB 10000 Movies Dataset.csv" and "10000_Movies_Data.csv" datasets, which are available on Kaggle. Here is the link to download the dataset: https://www.kaggle.com/datasets/muqarrishzaib/tmdb-10000-movies-dataset.
-    The "TMDB 10000 Movies Dataset.csv" contains over 10,000 rows and four columns: (movie_id, title, cast, crew). The "10000_Movies_Data.csv" contains over 10,000 rows and five columns: (Unnamed: 0, movie_id, title, cast, crew).
+* 🧹 **Data Preprocessing & Cleaning:**
+  * Extracts essential fields: `movie_id`, `title`, `overview`, `genres`, `keywords`, `cast`, and `director`.
+  * Parses stringified JSON objects and cleans missing values.
+  * Normalizes text by converting to lowercase, collapsing multi-word names (e.g., `Sam Worthington` -> `SamWorthington`), and applying stemming.
 
-Command to create environment -> "conda create --prefix ./env python==3.7 -y"
-Command to activate environment -> conda activate "C:\Users\gites\OneDrive\Desktop\Movie Recomdation System\env"
-To run the app.py run the following "command streamlit run app.py"
+* 🏷️ **Tag Generation:**
+  * Merges all processed attributes into a unified `tags` column per movie.
+
+* 📐 **Vectorization:**
+  * Converts textual tags into high-dimensional numerical vectors using `CountVectorizer` / `TfidfVectorizer` (filtering standard English stop words).
+
+* 🎯 **Similarity Computation:**
+  * Evaluates similarity using **Cosine Similarity**:
+    $$\text{Cosine Similarity}(A, B) = \frac{A \cdot B}{\|A\| \|B\|}$$
+  * Returns and ranks the top $k$ highest-scoring titles relative to the query movie.
+
+---
+
+## 🚀 Key Features
+
+* 🎯 **Thematic Matching:** Delivers recommendations based on deep narrative and categorical overlap.
+* ❄️ **Cold-Start Resilient:** Produces high-quality recommendations instantly without requiring user watch logs or ratings.
+* 🔢 **Top-N Outputs:** Retrieves the top 5–10 closest matches ranked by similarity score.
+* 🖼️ **Dynamic Visuals:** Fetches live movie posters and metadata via **TMDB API** integration.
+
+---
+
+## 🛠️ Tech Stack
+
+* 🐍 **Language:** Python
+* 📊 **Machine Learning & Data Processing:** Pandas, NumPy, Scikit-learn, NLTK
+* 🌐 **Web Framework:** Streamlit / Flask
+* 🔌 **API Integration:** The Movie Database (TMDB) API
+* 💾 **Model Serialization:** Pickle
+
+---
+
+## 📥 Installation & Setup
+
+```bash
+# 1. Clone the repository
+git clone [https://github.com/your-username/movie-recommendation-system.git](https://github.com/your-username/movie-recommendation-system.git)
+cd movie-recommendation-system
+
+# 2. Create and activate a virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# 3. Install required packages
+pip install -r requirements.txt
+
+# 4. Run the application
+streamlit run app.py
